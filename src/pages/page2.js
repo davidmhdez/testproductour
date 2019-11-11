@@ -6,7 +6,7 @@ export default class page2 extends Component {
     render() {
         return (
             <div>
-                <h1>This is page 2</h1>
+                <h1 id="title2">This is page 2</h1>
                 <Container>
                     I'm a div too
                 </Container>
