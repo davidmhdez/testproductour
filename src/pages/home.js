@@ -3,8 +3,20 @@ import styled from 'styled-components';
 
 export default class Home extends Component {
 
+    state = {
+        visible: false
+    }
+
     message = () =>{
-        alert('clicked!!!');
+        if(this.state.visible){
+            this.setState({
+                visible: false
+            })
+        }else{
+            this.setState({
+                visible: true
+            })
+        }
     }
 
     render() {
@@ -12,13 +24,14 @@ export default class Home extends Component {
             <div>
                 <h1 id="title">This is home</h1>
                 <TourButton onClick={this.props.openTour}>Start tour</TourButton>
-                <Container>
+                <Container className="">
                     <h2>Fill this field</h2>
                     <div>
                         <label>Name</label>
                         <input id="field" type="text"/>
                         <button id="btn" onClick={this.message} >save</button>
                     </div>
+                    {this.state.visible ? <h2>this is not visible</h2> : ''}
                 </Container>
             </div>
         );

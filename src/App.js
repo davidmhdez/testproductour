@@ -3,14 +3,18 @@ import Home from './pages/home';
 import Navbar from './components/Navbar';
 import page2 from './pages/page2';
 import Tour from 'reactour';
+import styled from 'styled-components';
+import initHelpHero from 'helphero';
 
 
 import React, { Component } from 'react';
 
+var hlp = initHelpHero('iDW653GhT52');
+
 class App extends Component {
 
   state = {
-    isOpenTour: false
+    isOpenTour: false,
   }
 
   openTour = () =>{
@@ -30,6 +34,7 @@ class App extends Component {
   
 
   render() {
+    hlp.anonymous()
     return (
       <BrowserRouter>
       <Navbar/>
@@ -57,11 +62,6 @@ class App extends Component {
   }
 }
 
-function setFocus(){
-  // document.getElementById("field").focus
-  alert("it works!!");
-}
-
 const steps = [
   {
     selector:'#title',
@@ -76,10 +76,10 @@ const steps = [
     //   // 
     // }
 
-    action: () =>{
-      // document.getElementById('field').focus();
-      alert("it works!!");
-    }
+    // actionBefore: () =>{
+    //   // document.getElementById('field').focus();
+    //   alert("it works!!");
+    // }
 
     // content: ({goTo}) =>(
     //   <button onClick={()=>goTo(0)}>Click me</button>
@@ -88,7 +88,7 @@ const steps = [
   {
     selector:'#btn',
     content: 'you must click this button',
-    stepInteraction: false
+    // stepInteraction: false
   },
   {
     selector:'#nextPage',
@@ -96,8 +96,17 @@ const steps = [
   },
   {
     selector:'#title2',
-    content:'hi, we are in other page'
+    // content:'hi, we are in other page'
+    content: () => (
+      <Button>button b</Button>
+    )
   }
 ];
+
+const Button = styled.button`
+  padding: 10px;
+  color: currentColor;
+  background-color: purple;
+`;
 
 export default App;
