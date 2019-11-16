@@ -23,7 +23,8 @@ export default class Home extends Component {
         return (
             <div>
                 <h1 id="title">This is home</h1>
-                <TourButton onClick={this.props.openTour}>Start tour</TourButton>
+                <TourButton onClick = {this.props.startour}
+                >Start tour</TourButton>
                 <Container className="">
                     <h2>Fill this field</h2>
                     <div>

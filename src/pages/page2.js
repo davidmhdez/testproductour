@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import styled from 'styled-components';
+import Field from '../components/Field';
 
 export default class page2 extends Component {
 
@@ -8,7 +9,7 @@ export default class page2 extends Component {
             <div>
                 <h1 id="title2">This is page 2</h1>
                 <Container>
-                    I'm a div too
+                    <Field/>
                 </Container>
             </div>
         );

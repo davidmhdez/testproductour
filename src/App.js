@@ -31,10 +31,15 @@ class App extends Component {
     )
   }
   
+  startour = () => {
+    hlp.startTour('yxj8VUMuf4X')
+    console.log('dddddddddddddddd')
+  }
   
 
   render() {
     hlp.anonymous()
+    
     return (
       <BrowserRouter>
       <Navbar/>
@@ -42,6 +47,7 @@ class App extends Component {
         <Route exact path ='/' render={()=>(
           <Home
             openTour={this.openTour}
+            startour={this.startour}
           />
         )}/>
         <Route exact path='/page2' component={page2}/>
