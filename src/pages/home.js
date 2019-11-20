@@ -81,16 +81,12 @@ export default class Home extends Component {
 }
 
 const Container = styled.div`
-<<<<<<< HEAD
     width:100%;
     
     @media (min-width: 550px) {
         width:500px;
     }
 
-=======
-    width: 500px;
->>>>>>> 1ba59bade031025d11fa5224cafc2efcdb50f8fc
     background-color: purple;
     color: white;
     font-size: 16px;
