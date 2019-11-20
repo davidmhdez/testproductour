@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import {FaList} from 'react-icons/fa';
+import {IoIosLogOut} from 'react-icons/io';
 
 export default class Navbar extends Component {
 
@@ -9,13 +9,13 @@ export default class Navbar extends Component {
         return (
             <Navigation>
                 <div>
-                    <NavLink  to={'/'}>Home</NavLink>
+                    <NavLink  to={'/home'}>Home</NavLink>
                 </div>
                 <div>
                     <NavLink id="nextPage" to={'/page2'}>Next page</NavLink>
                 </div>
                 <div>
-                    <FaList id="menu"/>
+                     <NavLink to={'/'}> <IoIosLogOut id="menu"/> </NavLink>
                 </div>
             </Navigation>
         );
