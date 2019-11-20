@@ -18,15 +18,20 @@ class App extends Component {
 
   startour = () => {
     hlp.startTour('cHZ2xnDr0hP')
-    console.log('dddddddddddddddd')
+    console.log('tour startes')
   }
 
   enableNew = () => {
     this.setState({
       isNew: true
+    },()=>{
+      hlp.update({
+        isNew: this.state.isNew
+      });
+      console.log('updated help hero');
     })
 
-    console.log('enableddddd')
+    console.log('toogle enabled')
   }
   
   componentDidMount() {
