@@ -1,10 +1,13 @@
 import React,{Component} from 'react';
 import styled from 'styled-components';
+import List from '../components/List';
+import Switch from 'react-switch';
 
 export default class Home extends Component {
 
     state = {
-        visible: false
+        visible: false,
+        toogleValue: false
     }
 
     message = () =>{
@@ -19,7 +22,25 @@ export default class Home extends Component {
         }
     }
 
+
+    changeValue = () =>{
+        if(this.state.toogleValue){
+            this.setState({
+                toogleValue: false
+            })
+        }
+        else{
+            this.setState({
+                toogleValue: true
+            })
+            this.props.enableNew();
+        }
+    }
+
     render() {
+
+        const {toogleValue} = this.state;
+
         return (
             <div>
                 <h1 id="title">This is home</h1>
@@ -33,6 +54,26 @@ export default class Home extends Component {
                         <button id="btn" onClick={this.message} >save</button>
                     </div>
                     {this.state.visible ? <h2>this is not visible</h2> : ''}
+                    <div>
+                        <h3>Are you new?</h3>
+                        <Switch className="toogle" checked={toogleValue} onChange={this.changeValue}/>
+                    </div>
+                    <List/>
+                    <Description>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim, nisl vel fringilla luctus, 
+                    justo erat euismod risus, et lobortis lorem sem vel justo. Curabitur eget magna malesuada, tempus libero nec, 
+                    varius justo. Praesent posuere, nisl porttitor dapibus aliquam, erat libero tempor purus, non porttitor ex ante id mi.
+                    Aliquam a placerat augue. Aenean congue, risus eget consequat bibendum, felis diam tincidunt lacus, in vehicula odio dui 
+                    ut ipsum. Aliquam condimentum auctor lacus ac consectetur. Class aptent taciti sociosqu ad litora torquent per conubia 
+                    nostra, per inceptos himenaeos. Aliquam laoreet cursus sem eget commodo. Aliquam ante eros, facilisis quis massa eu, 
+                    feugiat ultricies lectus. Morbi ultricies, massa in mattis vehicula, est erat ultrices mauris, sed malesuada sem mi eget 
+                    turpis. Aliquam pulvinar tincidunt risus consequat efficitur. Morbi facilisis turpis nulla, eu malesuada felis placerat in. 
+                    Donec commodo odio at enim rutrum scelerisque. Vivamus laoreet odio ac felis aliquet placerat. Duis venenatis porta dictum. 
+                    Curabitur id sapien porttitor, vestibulum ipsum vitae, rutrum nunc. Vivamus id pulvinar elit. Praesent a euismod felis. 
+                    Quisque porttitor justo ut dignissim ornare. Integer et justo luctus, vehicula dolor non, euismod enim. 
+                    Integer maximus erat posuere lectus semper, id laoreet risus cursus.
+                    </Description>
+                    <h2 id="lb">label</h2>
                 </Container>
             </div>
         );
@@ -41,7 +82,6 @@ export default class Home extends Component {
 
 const Container = styled.div`
     width: 500px;
-    height: 500px;
     background-color: purple;
     color: white;
     font-size: 16px;
@@ -63,4 +103,9 @@ const TourButton = styled.button`
     background-color: purple;
     font-weight: bold;
     color: white;
+`;
+
+const Description = styled.p`
+    margin-top: 50px;
+    padding: 10px;
 `;

@@ -1,15 +1,45 @@
 import React,{Component} from 'react';
 import styled from 'styled-components';
 import Field from '../components/Field';
+import Switch from 'react-switch';
+import Calendar from 'react-calendar';
 
 export default class page2 extends Component {
 
+
+    state = {
+        toogleValue: false
+    }
+
+    changeValue = () =>{
+        if(this.state.toogleValue){
+            this.setState({
+                toogleValue: false
+            })
+        }
+        else{
+            this.setState({
+                toogleValue: true
+            })
+        }
+    }
+
     render() {
+
+        const {toogleValue} = this.state;
+
         return (
             <div>
                 <h1 id="title2">This is page 2</h1>
                 <Container>
                     <Field/>
+                    <SectionContainer>
+                        <Switch className="toogle" checked={toogleValue} onChange={this.changeValue}/>
+                    </SectionContainer>
+                    <SectionContainer>
+                        <Calendar className="calendar"/>
+                    </SectionContainer>
+                    <img src="../img/test.jpg" width="100px" height="100px"/>
                 </Container>
             </div>
         );
@@ -24,4 +54,10 @@ const Container = styled.div`
     font-size: 16px;
     font-weight: bold;
     margin: 0 auto;
+`;
+
+const SectionContainer = styled.div`
+    margin-top: 50px;
+    padding: 15px;
+    text-align: center;
 `;
