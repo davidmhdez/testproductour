@@ -3,7 +3,11 @@ import Home from './home';
 import Navbar from '../components/Navbar';
 import page2 from './page2';
 import initHelpHero from 'helphero';
+<<<<<<< HEAD
 import Login from './Login';
+=======
+// import Login from './Login';
+>>>>>>> cae971f34acbad0a131af73f7833dd1590497550
 
 
 import React, { Component } from 'react';
