@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import {FaList} from 'react-icons/fa';
 
 export default class Navbar extends Component {
 
@@ -12,6 +13,9 @@ export default class Navbar extends Component {
                 </div>
                 <div>
                     <NavLink id="nextPage" to={'/page2'}>Next page</NavLink>
+                </div>
+                <div>
+                    <FaList id="menu"/>
                 </div>
             </Navigation>
         );
