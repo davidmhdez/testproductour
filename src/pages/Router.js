@@ -1,13 +1,9 @@
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Home from './home';
 import Navbar from '../components/Navbar';
 import page2 from './page2';
 import initHelpHero from 'helphero';
-<<<<<<< HEAD
 import Login from './Login';
-=======
-// import Login from './Login';
->>>>>>> cae971f34acbad0a131af73f7833dd1590497550
 
 
 import React, { Component } from 'react';
@@ -19,7 +15,8 @@ class Router extends Component {
   state = {
     isOpenTour: false,
     isNew: false,
-    user: ''
+    user: null,
+    navigate: false
   }
 
   startour = () => {
@@ -40,9 +37,21 @@ class Router extends Component {
     console.log('toogle enabled')
   }
   
+
+  setLocalStorage = (userProps) =>{
+    localStorage.setItem('userProps',JSON.stringify(userProps));
+  }
+
+  getLocalStorage = () =>{
+    const lcUser = JSON.parse(localStorage.getItem('userProps'));
+    return lcUser
+  }
+
   login = (user) => {
+    this.setLocalStorage({user});
     this.setState({
-      user
+      user,
+      navigate:true
     })
     hlp.identify(this.state.user,{
       isNew: this.state.isNew
@@ -50,26 +59,48 @@ class Router extends Component {
     hlp.showBeacon()
   }
 
+  logout = () =>{
+    localStorage.removeItem('userProps')
+    console.log('exit');
+    
+      this.setState({
+        navigate:false,
+        user: null
+      })
+    
+  }
+
+  componentDidMount() {
+    // console.log(this.getLocalStorage())
+    const lsUser = this.getLocalStorage()
+    this.setState({
+      user: lsUser
+    })
+    console.log(`dmuser: ${this.state.user}`)
+  }
+
   render() { 
+
     return (
       <BrowserRouter>
-      {this.state.user !== '' ? <Navbar/> : ''}
-      <Switch>
-      <Route exact path ='/' render={()=>(
-          <Login
-            login={this.login}
-          />
-        )}/>
-        <Route exact path ='/home' render={()=>(
-          <Home
-            // openTour={this.openTour}
-            startour={this.startour}
-            enableNew={this.enableNew}
-          />
-        )}/>
-        <Route exact path='/page2' component={page2}/>
-      </Switch>
-    </BrowserRouter>
+        {this.state.user !== null ? <Navbar logout={this.logout}  /> : ''}
+        <Switch>
+          <Route exact path ='/' render={()=>(
+            <Login
+              login={this.login}
+            />
+          )}/> 
+          <Route exact path ='/home' render={()=>(
+            <Home
+              startour={this.startour}
+              enableNew={this.enableNew}
+            />
+          )}/>
+          <Route exact path='/page2' component={page2}/>
+        </Switch>
+        {console.log(`reuser: ${this.state.user}`)}
+        {!this.state.navigate ? <Redirect to='/'/> : ''}
+      </BrowserRouter>
     );
   }
 }

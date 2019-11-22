@@ -15,7 +15,7 @@ export default class Navbar extends Component {
                     <NavLink id="nextPage" to={'/page2'}>Next page</NavLink>
                 </div>
                 <div>
-                     <NavLink to={'/'}> <IoIosLogOut id="menu"/> </NavLink>
+                      <IoIosLogOut id="menu" onClick={this.props.logout}/> 
                 </div>
             </Navigation>
         );
