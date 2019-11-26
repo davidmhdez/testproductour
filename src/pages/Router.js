@@ -72,7 +72,7 @@ class Router extends Component {
 
   componentDidMount() {
     // console.log(this.getLocalStorage())
-    const lsUser = this.getLocalStorage()
+    const lsUser = this.getLocalStorage('userProps')
     this.setState({
       user: lsUser
     })
