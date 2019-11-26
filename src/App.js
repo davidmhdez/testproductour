@@ -26,6 +26,10 @@ class App extends Component {
       }
     )
   }
+
+  componentDidMount() {
+    hlp.anonymous()
+  }
   
   render() {
     return (
